@@ -1,0 +1,59 @@
+body {
+    background: 
+      linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
+      url('https://i.pinimg.com/1200x/f2/2c/f4/f22cf4ca30a22a58ddcbc63813c21f04.jpg');
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    filter: brightness(1.3);    
+    color: #fff8dc;                
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    margin: 0;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 60px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+h2 {
+    font-size: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+h3 {
+    font-size: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+
+.chocolate-btn {
+    display: inline-block;
+    border: none;
+    padding: 0; 
+    cursor: pointer;
+}
+
+.chocolate-btn img {
+    display: block;
+    width: auto;       
+    max-width: 300px;  
+    height: auto;
+    border-radius: 12px; 
+    box-shadow: 0 5px #4B2200, 0 0 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.chocolate-btn img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px #4B2200, 0 0 15px rgba(0,0,0,0.3);
+}
