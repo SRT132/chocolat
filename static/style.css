@@ -1,14 +1,14 @@
-/* Corps de la page avec fond chocolat Pinterest */
+
 body {
     background: 
       linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
       url('https://i.pinimg.com/1200x/f2/2c/f4/f22cf4ca30a22a58ddcbc63813c21f04.jpg');
-    background-size: cover;        /* couvre tout l'écran */
-    background-position: center;   /* centre l'image */
-    background-repeat: no-repeat;  /* pas de répétition */
-    background-attachment: fixed;  /* effet parallaxe si scroll */
-    filter: brightness(1.3);       /* augmente la luminosité */
-    color: #fff8dc;                /* texte crème */
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    filter: brightness(1.3);       
+    color: #fff8dc;                
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding-top: 100px;
@@ -16,7 +16,6 @@ body {
     height: 100vh;
 }
 
-/* Titres et texte */
 h1 {
     font-size: 60px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
@@ -37,20 +36,20 @@ p {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
-/* Bouton tablette chocolat avec image exacte */
+
 .chocolate-btn {
     display: inline-block;
     border: none;
-    padding: 0; /* pas de marge autour de l'image */
+    padding: 0; 
     cursor: pointer;
 }
 
 .chocolate-btn img {
     display: block;
-    width: auto;       /* garde les proportions */
-    max-width: 300px;  /* ajuste la taille comme tu veux */
+    width: auto;       
+    max-width: 300px;  
     height: auto;
-    border-radius: 12px; /* optionnel pour arrondir légèrement les bords */
+    border-radius: 12px; 
     box-shadow: 0 5px #4B2200, 0 0 10px rgba(0,0,0,0.2);
     transition: 0.3s;
 }
