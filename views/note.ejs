@@ -1,1 +1,130 @@
 <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Chocolat</title>
+
+    <!-- Ton CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Styles en plus pour la zone de texte -->
+    <style>
+        .container-notes {
+            background: rgba(0, 0, 0, 0.55);
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 260px;
+            border-radius: 10px;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            resize: vertical;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .controls button,
+        .controls input[type="file"] {
+            padding: 10px 18px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        .controls button {
+            background-color: #4B2200;
+            color: #fff8dc;
+        }
+
+        .controls button:hover {
+            background-color: #8a4b20;
+        }
+
+        .controls input[type="file"] {
+            background-color: #fff8dc;
+            color: #4B2200;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #fff8dc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bloc-notes CHOCOLAT</h1>
+    <h3>Importer, écrire, exporter 🍫</h3>
+    <p>
+        Utilise cette page pour écrire ton texte, importer un fichier .txt ou exporter ce que tu as écrit.
+    </p>
+
+    <div class="container-notes">
+        <!-- Zone d’écriture -->
+        <textarea id="zoneTexte" placeholder="Écris ton texte ici..."></textarea>
+
+        <!-- Import / Export -->
+        <div class="controls">
+            <input type="file" id="importer" accept=".txt">
+            <button type="button" onclick="exporterTexte()">Exporter le texte</button>
+        </div>
+    </div>
+
+    <!-- Lien retour si tu veux -->
+    <a href="/" class="back-link">⬅ Retour à la page principale</a>
+
+    <script>
+        // ----- IMPORTER -----
+        const inputImporter = document.getElementById('importer');
+        const zoneTexte = document.getElementById('zoneTexte');
+
+        inputImporter.addEventListener('change', function () {
+            const fichier = this.files[0];
+            if (!fichier) return;
+
+            const lecteur = new FileReader();
+
+            lecteur.onload = function () {
+                zoneTexte.value = lecteur.result;
+            };
+
+            lecteur.readAsText(fichier);
+        });
+
+        // ----- EXPORTER -----
+        function exporterTexte() {
+            const contenu = zoneTexte.value;
+
+            const blob = new Blob([contenu], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "notes_chocolat.txt";
+            a.click();
+
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

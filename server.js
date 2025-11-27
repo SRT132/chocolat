@@ -1,50 +1,31 @@
-const express = require("express")
-const ejs = require("ejs")
+const express = require("express");
+const ejs = require("ejs");
 
-const server = express()
-const port = 3030
+const server = express();
+const port = 3030;
 
-const note_router = require("./routes/note")
+// On récupère le routeur "note"
+const note_router = require("./routes/note");
 
-server.set("view engine", "ejs")
+// Moteur de vue
+server.set("view engine", "ejs");
+// (optionnel si par défaut) :
+// server.set("views", __dirname + "/views");
 
-server.use(express.static("static"))
 
+// Fichiers statiques (CSS, images, etc.)
+// --> ton dossier "static" doit contenir style.css
+server.use(express.static("static"));
+
+// Route de la page d'accueil -> index.ejs
 server.get("/", function (request, response) {
-    response.render("index",{})
-})
-server.use("/note", note_router)
-
-server.listen(port,function () {
-    console.log("serveur started!")
-})
-
-const express = require('express');
-const path = require('path');
-
-// ⚠️ Cette ligne manquait ou est placée trop bas !
-const app = express();
-
-const PORT = 3000;
-
-// Configuration du moteur de template
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Fichiers statiques (CSS/JS)
-app.use(express.static(path.join(__dirname, 'public')));
-
-// ROUTE ACCUEIL
-app.get('/', (req, res) => {
-    res.render('index');
+    response.render("index", {});
 });
 
-// ROUTE PAGE 2 /note
-app.get('/note', (req, res) => {
-    res.render('note');
-});
+// Route /note -> gérée par routes/note.js
+server.use("/note", note_router);
 
-// LANCEMENT DU SERVEUR
-app.listen(PORT, () => {
-    console.log(`Serveur Notebook lancé sur http://localhost:${PORT}`);
+// Lancement du serveur
+server.listen(port, function () {
+    console.log("serveur started! http://localhost:" + port);
 });
